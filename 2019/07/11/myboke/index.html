@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="金宝的博客">
 <meta property="og:description" content="START_NOT_STICKY：表示当Service运行的进程被Android系统强制杀掉之后，不会重新创建该Service，如果想重新实例化该Service，就必须重新调用startService来启动。 使用场景：表示当Service在执行工作中被中断几次无关紧要或者对Android内存紧张的情况下需要被杀掉且不会立即重新创建这种行为也可接受的话，这是可以在onStartCommand返回值">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-22T12:17:57.828Z">
+<meta property="og:updated_time" content="2019-07-22T12:25:01.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="服务中startCommand返回值作用（四种）">
 <meta name="twitter:description" content="START_NOT_STICKY：表示当Service运行的进程被Android系统强制杀掉之后，不会重新创建该Service，如果想重新实例化该Service，就必须重新调用startService来启动。 使用场景：表示当Service在执行工作中被中断几次无关紧要或者对Android内存紧张的情况下需要被杀掉且不会立即重新创建这种行为也可接受的话，这是可以在onStartCommand返回值">
@@ -177,9 +177,6 @@
         <p>START_NOT_STICKY：表示当Service运行的进程被Android系统强制杀掉之后，不会重新创建该Service，如果想重新实例化该Service，就必须重新调用startService来启动。</p>
 <p>使用场景：表示当Service在执行工作中被中断几次无关紧要或者对Android内存紧张的情况下需要被杀掉且不会立即重新创建这种行为也可接受的话，这是可以在onStartCommand返回值中设置该值。如在Service中定时从服务器中获取最新数据</p>
 <p>START_STICKY：表示Service运行的进程被Android系统强制杀掉之后，Android系统会将该Service依然设置为started状态（即运行状态），但是不再保存onStartCommand方法传入的intent对象，然后Android系统会尝试再次重新创建该Service，并执行onStartCommand回调方法，这时onStartCommand回调方法的Intent参数为null，也就是onStartCommand方法虽然会执行但是获取不到intent信息。</p>
-<hr>
-<p>换行了</p>
-<hr>
 
       
 
