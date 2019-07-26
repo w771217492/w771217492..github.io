@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://kingbao.design">
-  <title>acache的使用及其特性 | 金宝的博客</title>
+  <title>weaklock的使用,转自简书小草丸 | 金宝的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="特色主要是如下 1：轻，轻到只有一个JAVA文件。2：可配置，可以配置缓存路径，缓存大小，缓存数量等。3：可以设置缓存超时时间，缓存超时自动失效，并被删除。4：支持多进程。">
+  <meta name="description" content="WakeLock的使用需要谨慎处理，使用不当会让应用变成“电量杀手”。使用的原则能不用就尽量别用：比如要保持屏幕长亮，应该用 1getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="acache的使用及其特性">
-<meta property="og:url" content="http://kingbao.design/2019/07/25/Acache的使用/index.html">
+<meta property="og:title" content="weaklock的使用,转自简书小草丸">
+<meta property="og:url" content="http://kingbao.design/2019/07/26/weaklock的使用/index.html">
 <meta property="og:site_name" content="金宝的博客">
-<meta property="og:description" content="特色主要是如下 1：轻，轻到只有一个JAVA文件。2：可配置，可以配置缓存路径，缓存大小，缓存数量等。3：可以设置缓存超时时间，缓存超时自动失效，并被删除。4：支持多进程。">
+<meta property="og:description" content="WakeLock的使用需要谨慎处理，使用不当会让应用变成“电量杀手”。使用的原则能不用就尽量别用：比如要保持屏幕长亮，应该用 1getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-25T01:34:57.895Z">
+<meta property="og:updated_time" content="2019-07-26T01:32:15.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="acache的使用及其特性">
-<meta name="twitter:description" content="特色主要是如下 1：轻，轻到只有一个JAVA文件。2：可配置，可以配置缓存路径，缓存大小，缓存数量等。3：可以设置缓存超时时间，缓存超时自动失效，并被删除。4：支持多进程。">
+<meta name="twitter:title" content="weaklock的使用,转自简书小草丸">
+<meta name="twitter:description" content="WakeLock的使用需要谨慎处理，使用不当会让应用变成“电量杀手”。使用的原则能不用就尽量别用：比如要保持屏幕长亮，应该用 1getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);">
   
     <link rel="alternative" href="/atom.xml" title="金宝的博客" type="application/atom+xml">
   
@@ -154,38 +154,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Acache的使用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-weaklock的使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      acache的使用及其特性
+      weaklock的使用,转自简书小草丸
     </h1>
   
 
         
-        <a href="/2019/07/25/Acache的使用/" class="archive-article-date">
-  	<time datetime="2019-07-25T01:06:57.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+        <a href="/2019/07/26/weaklock的使用/" class="archive-article-date">
+  	<time datetime="2019-07-26T01:13:20.608Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="特色主要是如下"><a href="#特色主要是如下" class="headerlink" title="特色主要是如下"></a>特色主要是如下</h2><blockquote>
-<p>1：轻，轻到只有一个JAVA文件。<br>2：可配置，可以配置缓存路径，缓存大小，缓存数量等。<br>3：可以设置缓存超时时间，缓存超时自动失效，并被删除。<br>4：支持多进程。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="它在android中可以用在哪些场景"><a href="#它在android中可以用在哪些场景" class="headerlink" title="它在android中可以用在哪些场景"></a>它在android中可以用在哪些场景</h2><blockquote>
-<p>1、替换SharePreference当做配置文件<br>2、可以缓存网络请求数据，比如oschina的android客户端可以缓存http请求的新闻内容，缓存时间假设为1个小时，超时后自动失效，让客户端重新请求新的数据，减少客户端流量，同时减少服务器并发量。</p>
-</blockquote>
-<h2 id="如何引入"><a href="#如何引入" class="headerlink" title="如何引入"></a>如何引入</h2><p>![github]: <a href="https://github.com/yangfuhai/ASimpleCache" target="_blank" rel="noopener">https://github.com/yangfuhai/ASimpleCache</a><br>导入其中的ACache文件<br>使用示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ACache mCache = ACache.get(this);</span><br><span class="line">mCache.put(&quot;test_key1&quot;, &quot;test value&quot;);</span><br><span class="line">mCache.put(&quot;test_key2&quot;, &quot;test value&quot;, 10);//保存10秒，如果超过10秒去获取这个key，将为null</span><br><span class="line">mCache.put(&quot;test_key3&quot;, &quot;test value&quot;, 2 * ACache.TIME_DAY);//保存两天，如果超过两天去获取这个key，将为null</span><br></pre></td></tr></table></figure>
+        <h3 id="WakeLock的使用需要谨慎处理，使用不当会让应用变成“电量杀手”。使用的原则"><a href="#WakeLock的使用需要谨慎处理，使用不当会让应用变成“电量杀手”。使用的原则" class="headerlink" title="WakeLock的使用需要谨慎处理，使用不当会让应用变成“电量杀手”。使用的原则"></a>WakeLock的使用需要谨慎处理，使用不当会让应用变成“电量杀手”。使用的原则</h3><p>能不用就尽量别用：比如要保持屏幕长亮，应该用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);</span><br></pre></td></tr></table></figure>
 
-<p>获取数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ACache mCache = ACache.get(this);</span><br><span class="line">String value = mCache.getAsString(&quot;test_key1&quot;);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>PowerManager.FULL_WAKE_LOCK会保持屏幕长亮，比如设置15s自动灭屏，当申请了该wakelock后，即使超过15s，依然不会灭屏。但用户主动按power键，还是会灭屏的。</p>
+</blockquote>
+<p>如果非要用，用完之后记得释放。<br>申请WakeLock有两种方式acquire()跟acquire(long timeout)，后者相对更安全点，如果忘记了release WakeLock，经过timeout的时长后系统会自动release。</p>
+<h4 id="WakeLock的典型用法如下"><a href="#WakeLock的典型用法如下" class="headerlink" title="WakeLock的典型用法如下:"></a>WakeLock的典型用法如下:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PowerManager pm = (PowerManager)mContext.getSystemService(</span><br><span class="line">                                          Context.POWER_SERVICE);</span><br><span class="line">PowerManager.WakeLock wl = pm.newWakeLock(</span><br><span class="line">                                      PowerManager.PARTIAL_WAKE_LOCK</span><br><span class="line">                                      | PowerManager.ON_AFTER_RELEASE,</span><br><span class="line">                                      TAG);</span><br><span class="line">wl.acquire();//为了保证任务不被系统休眠打断，申请WakeLock</span><br><span class="line">// 开始我们的任务</span><br><span class="line">wl.release();//任务结束后释放，如果不写该句。则可以用wl.acquire(timeout)的方式把释放的工作交给系统。</span><br></pre></td></tr></table></figure>
+
+<p>同时需要在Manifest文件中添加权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK.&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="应用层debug"><a href="#应用层debug" class="headerlink" title="应用层debug"></a>应用层debug</h4><p>如果只是单纯的查看某一个应用的wakelock是否存在非正常释放的情况，可以用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys power|grep -i wake</span><br></pre></td></tr></table></figure>
+
+<p>来查看，比如下面的示例代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends Activity &#123;</span><br><span class="line">    private WakeLock wlLock;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onResume() &#123;</span><br><span class="line">        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);</span><br><span class="line">        wlLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK|PowerManager.ON_AFTER_RELEASE, &quot;azhengye-test-wakelock&quot;);</span><br><span class="line">        wlLock.acquire();</span><br><span class="line">        super.onResume();</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onPause() &#123;</span><br><span class="line">        wlLock.release();</span><br><span class="line">        super.onPause();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当进入onResume方法，此时dumpsys的信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell dumpsys power|grep -i wake</span><br><span class="line"></span><br><span class="line">  mWakefulness=Awake</span><br><span class="line">  mWakefulnessChanging=false</span><br><span class="line">  mWakeLockSummary=0x1</span><br><span class="line">  mLastWakeTime=34512600 (293075 ms ago)</span><br><span class="line">  mHoldingWakeLockSuspendBlocker=true</span><br><span class="line">  mWakeUpWhenPluggedOrUnpluggedConfig=true</span><br><span class="line">  mWakeUpWhenPluggedOrUnpluggedInTheaterModeConfig=false</span><br><span class="line">  mDoubleTapWakeEnabled=false</span><br><span class="line">  Wake Locks: size=1</span><br><span class="line">  PARTIAL_WAKE_LOCK              &apos;azhengye-test-wakelock&apos; ON_AFTER_RELEASE ACQ=-4m52s949ms LONG (uid=10124 pid=31473 pkg=com.azhengye.testpath)</span><br><span class="line">  PowerManagerService.WakeLocks: ref count=1</span><br></pre></td></tr></table></figure>
+
+<p>通过 PARTIAL_WAKE_LOCK ‘azhengye-test-wakelock’ ON_AFTER_RELEASE ACQ=-4m52s949ms LONG (uid=10124 pid=31473 pkg=com.azhengye.testpath) 可以看到wakelock申请成功了。<br>如果进入onPause方法，刚申请的wakelock应该被释放掉，此时dumpsys出的信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell dumpsys power|grep -i wake</span><br><span class="line"></span><br><span class="line">      mWakefulness=Awake</span><br><span class="line">      mWakefulnessChanging=false</span><br><span class="line">      mWakeLockSummary=0x1</span><br><span class="line">      mLastWakeTime=34512600 (477908 ms ago)</span><br><span class="line">      mHoldingWakeLockSuspendBlocker=true</span><br><span class="line">      mWakeUpWhenPluggedOrUnpluggedConfig=true</span><br><span class="line">      mWakeUpWhenPluggedOrUnpluggedInTheaterModeConfig=false</span><br><span class="line">      mDoubleTapWakeEnabled=false</span><br><span class="line">    Wake Locks: size=1</span><br><span class="line">      PARTIAL_WAKE_LOCK              &apos;AudioMix&apos; ACQ=-2s539ms (uid=1041 pkg=audioserver)</span><br><span class="line">      PowerManagerService.WakeLocks: ref count=1</span><br></pre></td></tr></table></figure>
 
 
       
@@ -266,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://kingbao.design/2019/07/25/Acache的使用/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://kingbao.design/2019/07/26/weaklock的使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,18 +292,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/26/weaklock的使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          weaklock的使用,转自简书小草丸
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/11/myboke/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">服务中startCommand返回值作用（四种）</div>
+    <a href="/2019/07/25/Acache的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">acache的使用及其特性</div>
       <i class="icon-circle-right"></i>
     </a>
   
